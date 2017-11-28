@@ -1,5 +1,6 @@
 package mjs.common.core;
 
+import groovy.util.logging.Slf4j;
 import mjs.common.exceptions.ModelException;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -15,12 +16,8 @@ import java.util.HashMap;
  * from the database.
  */
 @Controller
+@Slf4j
 public class BaseController extends SeerObject {
-
-    /**
-     * The log4j logger to use when writing log messages.
-     */
-    protected static final Logger log = Logger.getLogger("Controller");
 
     private final String entityType;
     private String entityNameProperty;

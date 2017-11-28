@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import groovy.util.logging.Slf4j;
 import mjs.common.exceptions.CoreException;
 import mjs.common.exceptions.ModelException;
 import mjs.common.utils.LogUtils;
@@ -25,12 +26,9 @@ import org.springframework.transaction.annotation.Transactional;
  * Hibernate.
  */
 @Transactional
+@Slf4j
 public class BaseService extends SeerObject {
 
-    /**
-     * The log4j logger to use when writing log messages.
-     */
-    protected static final Logger log = Logger.getLogger("Service");
     protected static final Logger logResultSet = Logger.getLogger("ResultSet");
 
     @Autowired

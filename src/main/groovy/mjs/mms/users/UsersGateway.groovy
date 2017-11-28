@@ -1,4 +1,4 @@
-package mjs.home.users
+package mjs.mms.users
 
 import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 @RestController
 @RequestMapping('/hello')
 @Slf4j
-class UsersController {
+class UsersGateway {
 
 	@RequestMapping(method = RequestMethod.GET, produces =  ['application/json'])
 	ResponseEntity<?> list(@RequestParam(required = false) String message) {
