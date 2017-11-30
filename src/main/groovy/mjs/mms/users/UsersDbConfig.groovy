@@ -8,6 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.orm.jpa.JpaTransactionManager
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
@@ -28,17 +29,17 @@ import javax.sql.DataSource;
  * This is the DB config object used to interact with the MySQL database.
  */
 @Configuration
-//@EnableTransactionManagement
-//@EnableJpaRepositories(
-//        entityManagerFactoryRef = "usersEntityManagerFactory",
-//        transactionManagerRef = "usersTransactionManager",
-//        basePackages = ["mjs.mms.users"]
-//)
+@EnableTransactionManagement
+@EnableJpaRepositories(
+        entityManagerFactoryRef = "entityManagerFactory",
+        transactionManagerRef = "transactionManager",
+        basePackages = ["mjs.mms.users"]
+)
 @Slf4j
 class UsersDbConfig {
 
     @Bean(name = "usersDataSource")
-    //@ConfigurationProperties(prefix = "users.datasource")  // Only use this prefix if you need to switch between two databases.
+    @ConfigurationProperties(prefix = "spring.datasource")  // Only use this prefix if you need to switch between two databases.
     public DataSource dataSource() {
         return DataSourceBuilder.create().build()
     }

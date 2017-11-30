@@ -22,26 +22,38 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
 @CompileStatic
 @RestController
-@RequestMapping('/users')
-class UsersController {
+@RequestMapping('/hello')
+@Slf4j
+class HelloController {
 
-    @Autowired
-    UsersRepository repo
-
-    UsersController() {
-//		super("mjs.mms.users.domain.User", "users", "fname+lname", "user_pk", "User")
+    HelloController() {
     }
 
-//	@RequestMapping(method = RequestMethod.GET, produces =  ['application/json'])
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)//, produces =  ['application/json'])
+    ResponseEntity<?> hello(@RequestParam(required = false) String message) {
+        log.info("Hello!!!!");
+        if (! message) {
+            return ResponseEntity.ok(["Hello", "World"])
+        } else {
+            return ResponseEntity.ok(["Hello", "World", message])
+        }
+    }
+
+    @RequestMapping(value = "/json", method = RequestMethod.GET, produces =  ['application/json'])
+    ResponseEntity<?> hellojson(@RequestParam(required = false) String message) {
+        log.info("Hello!!!!");
+        if (! message) {
+            return ResponseEntity.ok(["Hello", "World"])
+        } else {
+            return ResponseEntity.ok(["Hello", "World", message])
+        }
+    }
+
+    @RequestMapping(value = "/error500", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity getList(Model model) {
-        try {
-            List<User> userList = repo.findAll()
-            return ResponseEntity.ok(userList)
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(['message', e.getMessage()])
-        }
+        ResponseEntity response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(["message", "This is a test error message."])
+        return response
     }
 
 /*

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * AuthenticationManager.
  */
  @Entity
- @Table(name="users")
+ @Table(name="user")
  @JsonIgnoreProperties(ignoreUnknown = true)
 class User extends ModelLoggable {
      /**

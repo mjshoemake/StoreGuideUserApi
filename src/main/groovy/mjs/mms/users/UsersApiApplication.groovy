@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource
 
 @CompileStatic
 @SpringBootApplication
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.yml")
 @Slf4j
 class UsersApiApplication {
 
