@@ -1,4 +1,4 @@
-package mjs.home.users
+package mjs.mms.users
 
 import org.junit.Test
 import org.junit.runner.RunWith

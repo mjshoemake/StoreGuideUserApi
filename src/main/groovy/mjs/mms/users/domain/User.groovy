@@ -1,7 +1,10 @@
- package mjs.model
+ package mjs.mms.users.domain
 
 import mjs.common.model.ModelLoggable
-//import javax.persistence.Column;
+
+ import javax.persistence.Column
+
+ //import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,41 +32,43 @@ class User extends ModelLoggable {
      /**
       * The user's first name.
       */
+     @Column
      String fname = ""
 
      /**
       * The user's last name.
       */
+     @Column
      String lname = ""
 
      /**
       * The user login ID.
       */
+     @Column
      String username = ""
 
      /**
       * The user's email address.
       */
+     @Column
      String email = ""
 
      /**
       * The user's city.
       */
+     @Column
      String city = ""
 
      /**
       * The user's state.
       */
+     @Column
      String state = ""
-
-     /**
-      * The user's password.
-      */
-     String password = ""
 
      /**
       * Is the login enabled for this user?
       */
+     @Column
      String login_enabled = "Y"
 
      @Transient
@@ -83,6 +88,7 @@ class User extends ModelLoggable {
          // Do nothing.
      }
 
+     @Column
      public String getSearchable() {
          StringBuilder builder = new StringBuilder("|")
          if (name != null) {

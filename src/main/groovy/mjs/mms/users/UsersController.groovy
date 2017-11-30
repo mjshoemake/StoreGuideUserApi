@@ -5,7 +5,7 @@ import groovy.util.logging.Slf4j
 import mjs.common.core.BaseController
 import mjs.common.core.BaseService
 import mjs.mms.users.UsersService
-import mjs.model.User
+import mjs.mms.users.domain.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 //import org.springframework.stereotype.Controller
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
+/*
 @CompileStatic
 @RestController
 @RequestMapping('/users')
@@ -28,7 +29,7 @@ class UsersController extends BaseController {
 	UsersService service
 
 	UsersController() {
-		super("mjs.model.User", "users", "fname+lname", "user_pk", "User")
+		super("mjs.mms.users.domain.User", "users", "fname+lname", "user_pk", "User")
 	}
 
 //	@RequestMapping(value = "/users", method = RequestMethod.GET, produces =  ['application/json'])
@@ -75,10 +76,4 @@ class UsersController extends BaseController {
         }
     }
 */
-	@RequestMapping(method = RequestMethod.GET)
-	ResponseEntity<?> list(@RequestParam(required = false) String message) {
-		log.info("Users!!!!");
-		return ResponseEntity.ok(["Hello", "World", message])
-	}
-
-}
+//}

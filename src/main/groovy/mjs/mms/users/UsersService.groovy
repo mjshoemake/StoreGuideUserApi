@@ -12,15 +12,16 @@ import org.springframework.transaction.annotation.Transactional
 //import org.hibernate.criterion.Restrictions
 //import java.util.List
 
+/*
 @CompileStatic
 @Service
 @Transactional
 class UsersService extends BaseService {
 
     UsersService() {
-        super("mjs.model.User", "users", "fname+lname", "user_pk", "mjs.model.User")
+        super("mjs.mms.users.domain.User", "users", "fname+lname", "user_pk", "mjs.mms.users.domain.User")
     }
-
+*/
 /*
     public User login(String username, String password) throws LoginException {
         try {
@@ -49,4 +50,4 @@ class UsersService extends BaseService {
         }
     }
 */
-}
+//}
