@@ -28,14 +28,8 @@ class UsersController {
     @Autowired
     UsersRepository repo
 
-    UsersController() {
-//		super("mjs.mms.users.domain.User", "users", "fname+lname", "user_pk", "User")
-    }
-
-//	@RequestMapping(method = RequestMethod.GET, produces =  ['application/json'])
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity getList(Model model) {
+	@RequestMapping(method = RequestMethod.GET, produces = ['application/json'])
+    @ResponseBody ResponseEntity getList() {
         try {
             List<User> userList = repo.findAll()
             return ResponseEntity.ok(userList)
@@ -44,12 +38,21 @@ class UsersController {
         }
     }
 
-/*
-	@RequestMapping(value = "/users/{pk}", method = RequestMethod.GET)
-	@ResponseBody public ResponseEntity getByPK(Model model, @PathVariable int pk) {
-		return super.getByPK(model, pk, service as BaseService);
+	@RequestMapping(value = "/{pk}", method = RequestMethod.GET)
+	@ResponseBody ResponseEntity getByPK(Model model, @PathVariable int pk) {
+        try {
+            User user = repo.findOne(pk)
+            if (user) {
+                return ResponseEntity.ok(user)
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(['message', "The requested user was not found."])
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(['message', e.getMessage()])
+        }
 	}
 
+/*
 	@RequestMapping(value = "/users/{pkList}", method = RequestMethod.DELETE)
 	@ResponseBody public ResponseEntity delete(Model model, @PathVariable String pkList) {
 		return super.delete(model, pkList, service as BaseService);
